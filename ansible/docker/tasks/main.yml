@@ -1,0 +1,29 @@
+---
+- name: Garantindo os pre-requisitos do Docker
+  apt:
+    name: [apt-transport-https,ca-certificates,curl,gnupg-agent,software-properties-common,python-pip]
+    state: present
+    update_cache: yes
+
+- name: Adicionando a chave GPG
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Garantindo repositório atual do Docker
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+    state: present
+
+- name: Garantindo Docker
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: yes
+
+- name: Garantindo o Docker-py
+  pip:
+    name: docker-py
+    executable: pip
+    state: present
+...

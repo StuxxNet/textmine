@@ -1,0 +1,7 @@
+---
+- name: Garantindo a instalação do Docker
+  hosts: all
+  roles:
+    - docker
+  become: yes
+...
