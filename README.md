@@ -1,0 +1,1 @@
+Little project to learn/practice TextMining 
